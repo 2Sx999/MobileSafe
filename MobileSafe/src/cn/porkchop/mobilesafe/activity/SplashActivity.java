@@ -288,11 +288,15 @@ public class SplashActivity extends Activity {
 			case EXCEPTION:
 				Exception e = (Exception) msg.obj;
 				DataUtil.showDebugInfo(SplashActivity.this, e.getMessage());
+				startHomeActivity();
 				break;
 			case DOWNLOADFAIL:
 				DataUtil.showDebugInfo(SplashActivity.this, "下载失败");
+				startHomeActivity();
+				break;
 			case NEEDUPDATE:
 				showIsUpdateDialog();
+				break;
 			}
 		}
 	};
