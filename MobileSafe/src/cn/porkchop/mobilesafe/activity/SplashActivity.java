@@ -7,6 +7,9 @@ import cn.porkchop.mobilesafe.R.id;
 import cn.porkchop.mobilesafe.R.layout;
 import cn.porkchop.mobilesafe.R.menu;
 import android.app.Activity;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,25 +24,42 @@ import android.widget.TextView;
 
 public class SplashActivity extends Activity {
 
-	private TextView tv_splash_versioncode;
-	private TextView tv_splash_versionname;
+	private TextView tv_versioncode;
+	private TextView tv_versionname;
 	private RelativeLayout linearLayout;
+	private int mVersionCode;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		initView();
+		initData();
 		initAnimation();
 	}
 
+
 	private void initView() {
 		setContentView(R.layout.activity_splash);
-		tv_splash_versioncode = (TextView) findViewById(R.id.tv_splash_versioncode);
-		tv_splash_versionname = (TextView) findViewById(R.id.tv_splash_versionname);
+		tv_versioncode = (TextView) findViewById(R.id.tv_splash_versioncode);
+		tv_versionname = (TextView) findViewById(R.id.tv_splash_versionname);
 		linearLayout = (RelativeLayout) findViewById(R.id.linearLayout);
 	}
 
+	private void initData() {
+		PackageManager packageManager = getPackageManager();
+		try {
+			PackageInfo packageInfo = packageManager.getPackageInfo(getPackageName(), 0);
+			mVersionCode = packageInfo.versionCode;
+			String versionName = packageInfo.versionName;
+			//显示版本信息到ui
+			tv_versionname.setText(versionName);
+		} catch (NameNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	/**
 	 * 集合动画
 	 * 
