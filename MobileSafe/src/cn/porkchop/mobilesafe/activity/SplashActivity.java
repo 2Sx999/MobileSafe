@@ -72,9 +72,11 @@ public class SplashActivity extends Activity {
 		initView();
 		initData();
 		initAnimation();
+		
+		//********测试代码
 		SPUtil.putBoolean(this, SettingConstant.FILENAME,
-				SettingConstant.ISAUTOUPDATE, true);
-
+				SettingConstant.ISAUTOUPDATE, false);
+		//********测试代码
 	}
 
 	private void initView() {
@@ -309,6 +311,7 @@ public class SplashActivity extends Activity {
 	 */
 	private void startHomeActivity() {
 		startActivity(new Intent(this, HomeActivity.class));
+		finish();
 	}
 
 	/**
@@ -367,18 +370,7 @@ public class SplashActivity extends Activity {
 				intent.addCategory("android.intent.category.DEFAULT");
 				File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath(),"mobilesafe.apk");
 				intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
-				startActivity(intent);
-				/*
-				 * 				
-				Intent intent = new Intent();
-				intent.setAction("android.intent.action.VIEW");
-				intent.addCategory("android.intent.category.DEFAULT");
-				File file = new File(Environment.getExternalStorageDirectory(),"newms.apk");
-				
-				//数据和mimeType同时制定
-				intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
-				startActivityForResult(intent, 1);
-				 */
+				startActivityForResult(intent,1);
 			}
 
 			@Override
@@ -388,6 +380,11 @@ public class SplashActivity extends Activity {
 				handler.sendMessage(msg);
 			}
 		});
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		startHomeActivity();
 	}
 
 	@Override
