@@ -4,4 +4,5 @@ public interface SettingConstant {
 	String FILENAME = "settings";
 	String ISAUTOUPDATE = "isAutoUpdate";
 	String PASSWORD = "password";
+	String ISLOSTFINDSTEPFINISHED="isLostFindStepFinished";
 }
