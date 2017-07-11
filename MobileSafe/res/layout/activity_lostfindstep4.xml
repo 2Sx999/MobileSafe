@@ -7,7 +7,7 @@
     <!-- 头部标题 -->
 
     <TextView
-        style="@style/LostFindTitle"
+        style="@style/title_style"
         android:text="4.恭喜您,设置完成" />
     
     <CheckBox 

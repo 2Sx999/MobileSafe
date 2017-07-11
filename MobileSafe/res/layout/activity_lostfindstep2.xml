@@ -7,7 +7,7 @@
     <!-- 头部标题 -->
 
     <TextView
-        style="@style/LostFindTitle"
+        style="@style/title_style"
         android:text="2.手机卡绑定" />
     <!-- 显示的文字 -->
 

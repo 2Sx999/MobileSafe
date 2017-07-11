@@ -7,7 +7,7 @@
     <!-- 头部标题 -->
 
     <TextView
-        style="@style/LostFindTitle"
+        style="@style/title_style"
         android:text="3.设置安全号码" />
     <!-- 显示的文字 -->
 
