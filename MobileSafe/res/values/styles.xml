@@ -27,5 +27,14 @@
         <item name="android:gravity">center</item>
         <item name="android:background">@drawable/blue_bkg</item>
     </style>
+    
+    <style name="LostFindDescribeItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawableLeft">@drawable/dialog_title_default_icon</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:drawablePadding">5dp</item>
+    </style>
 
 </resources>

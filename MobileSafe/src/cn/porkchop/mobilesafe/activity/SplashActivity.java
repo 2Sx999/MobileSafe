@@ -120,6 +120,7 @@ public class SplashActivity extends Activity {
 				Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
 				0.5f);
 		ra.setDuration(2000);
+		//动画结束保持原样
 		ra.setFillAfter(true);
 
 		// 缩放动画

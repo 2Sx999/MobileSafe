@@ -5,4 +5,7 @@ public interface SettingConstant {
 	String ISAUTOUPDATE = "isAutoUpdate";
 	String PASSWORD = "password";
 	String ISLOSTFINDSTEPFINISHED="isLostFindStepFinished";
+	String SIMNUMBER = "simnumber";
+	String SAFENUMBER = "safenumber";
+	String ISBOOTWITHSERVICE = "bootwithservice";
 }
