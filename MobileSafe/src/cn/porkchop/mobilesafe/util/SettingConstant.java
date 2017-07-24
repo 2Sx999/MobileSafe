@@ -8,4 +8,6 @@ public interface SettingConstant {
 	String SIMNUMBER = "simnumber";
 	String SAFENUMBER = "safenumber";
 	String ISBOOTWITHSERVICE = "bootwithservice";
+	String PHONELOCATIONTOASTX="phonelocationtoastx";
+	String PHONELOCATIONTOASTY="phonelocationtoasty";
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:pkchop="http://schemas.android.com/apk/res/cn.porkchop.mobilesafe"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        style="@style/title_style"
+        android:text="高级工具" />
+
+    <cn.porkchop.mobilesafe.view.SettingCenterItem
+        android:id="@+id/settingcenteritem_advancedtools_findphonelocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        pkchop:bgSelector="first"
+        pkchop:desc="电话归属地查询"
+        pkchop:isShowToggle="false" />
+
+    <cn.porkchop.mobilesafe.view.SettingCenterItem
+        android:id="@+id/settingcenteritem_advancedtools_findservicenumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        pkchop:bgSelector="last"
+        pkchop:desc="服务号码查询"
+        pkchop:isShowToggle="false" />
+
+</LinearLayout>

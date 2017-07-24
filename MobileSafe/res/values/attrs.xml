@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SettingCenterItem">
+        <attr name="desc" format="string"/>
+        <attr name="bgSelector">
+            <enum name = "first" value="0"/>
+            <enum name = "middle" value="1"/>
+            <enum name = "last" value="2"/>
+        </attr>
+        <!-- 是否显示开关 -->
+        <attr name="isShowToggle" format="boolean"/>
+    </declare-styleable>
+</resources>

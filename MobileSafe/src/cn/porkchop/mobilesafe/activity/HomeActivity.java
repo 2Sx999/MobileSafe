@@ -79,6 +79,14 @@ public class HomeActivity extends Activity {
 						showPasswordDialog(true);
 					}
 					break;
+				case 1:
+					startActivity(new Intent(HomeActivity.this,
+							BlackListActivity.class));
+					break;
+				case 7:
+					startActivity(new Intent(HomeActivity.this,
+							AdvancedToolsActivity.class));
+					break;
 				}
 			}
 		});
@@ -124,8 +132,9 @@ public class HomeActivity extends Activity {
 								HomeActivity.this, SettingConstant.FILENAME,
 								SettingConstant.PASSWORD, "");
 						if (Md5Util.getMd5String(password).equals(truePassword)) {
-							//密码正确,进入下一个界面
-							Intent intent = new Intent(getApplicationContext(), LostFindActivity.class);
+							// 密码正确,进入下一个界面
+							Intent intent = new Intent(getApplicationContext(),
+									LostFindActivity.class);
 							startActivity(intent);
 							mAD.dismiss();
 						} else {
@@ -172,6 +181,10 @@ public class HomeActivity extends Activity {
 		setContentView(R.layout.activity_home);
 		iv_logo = (ImageView) findViewById(R.id.iv_home_logo);
 		gv_tools = (GridView) findViewById(R.id.gv_home_tools);
+	}
+
+	public void showSettingCenter(View v) {
+		startActivity(new Intent(this, SettingCenterActivity.class));
 	}
 
 	/**

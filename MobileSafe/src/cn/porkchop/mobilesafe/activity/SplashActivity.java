@@ -3,9 +3,11 @@ package cn.porkchop.mobilesafe.activity;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -35,6 +37,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.AssetManager;
 import android.content.res.Resources.NotFoundException;
 import android.net.Uri;
 import android.os.Bundle;
@@ -72,11 +75,7 @@ public class SplashActivity extends Activity {
 		initView();
 		initData();
 		initAnimation();
-		
-		//********测试代码
-		SPUtil.putBoolean(this, SettingConstant.FILENAME,
-				SettingConstant.ISAUTOUPDATE, false);
-		//********测试代码
+
 	}
 
 	private void initView() {
@@ -120,7 +119,7 @@ public class SplashActivity extends Activity {
 				Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
 				0.5f);
 		ra.setDuration(2000);
-		//动画结束保持原样
+		// 动画结束保持原样
 		ra.setFillAfter(true);
 
 		// 缩放动画
@@ -155,11 +154,43 @@ public class SplashActivity extends Activity {
 			@Override
 			public void onAnimationStart(Animation animation) {
 				mStartTime = System.currentTimeMillis();
+				//把assets中的文件复制到file文件夹中
+				new Thread() {
+					@Override
+					public void run() {
+						try {
+							copyFile("address.db");
+							copyFile("commonnum.db");
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
+					
+					private void copyFile(String fileName) throws IOException {
+						File fileDir = getFilesDir();
+						File file = new File(fileDir,fileName);
+						if(!file.exists()){
+							AssetManager assetManager = getAssets();
+							InputStream inputStream = assetManager.open(fileName);
+							OutputStream outputStream = new FileOutputStream(file);
+							int length=0;
+							byte[] buffer = new byte[1024*2];
+							while((length=inputStream.read(buffer))!=-1){
+								outputStream.write(buffer, 0, length);
+							}
+							inputStream.close();
+							outputStream.close();
+						}
+					}
+				}.start();
+				
+				
 				if (SPUtil.getBoolean(SplashActivity.this,
 						SettingConstant.FILENAME, SettingConstant.ISAUTOUPDATE,
 						false)) {
-
+					// 负责更新的线程
 					new Thread() {
+						@Override
 						public void run() {
 							checkUpdate();
 						}
@@ -270,7 +301,7 @@ public class SplashActivity extends Activity {
 		});
 	}
 
-	class UpdateInfo {
+	private class UpdateInfo {
 		String downloadUrl;
 		String description;
 		int versionCode;
@@ -369,9 +400,11 @@ public class SplashActivity extends Activity {
 				Intent intent = new Intent();
 				intent.setAction("android.intent.action.VIEW");
 				intent.addCategory("android.intent.category.DEFAULT");
-				File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath(),"mobilesafe.apk");
-				intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
-				startActivityForResult(intent,1);
+				File file = new File(Environment.getExternalStorageDirectory()
+						.getAbsolutePath(), "mobilesafe.apk");
+				intent.setDataAndType(Uri.fromFile(file),
+						"application/vnd.android.package-archive");
+				startActivityForResult(intent, 1);
 			}
 
 			@Override
@@ -382,7 +415,7 @@ public class SplashActivity extends Activity {
 			}
 		});
 	}
-	
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		startHomeActivity();

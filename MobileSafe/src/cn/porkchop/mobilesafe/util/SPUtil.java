@@ -36,4 +36,19 @@ public class SPUtil {
 				Context.MODE_PRIVATE);
 		return sp.getString(key, defaultValue);
 	}
+	public static void putInt(Context context, String fileName, String key,
+			int value) {
+		SharedPreferences sp = context.getSharedPreferences(fileName,
+				Context.MODE_PRIVATE);
+		Editor editor = sp.edit();
+		editor.putInt(key, value);
+		editor.apply();
+	}
+	
+	public static int getInt(Context context, String fileName,
+			String key, int defaultValue) {
+		SharedPreferences sp = context.getSharedPreferences(fileName,
+				Context.MODE_PRIVATE);
+		return sp.getInt(key, defaultValue);
+	}
 }

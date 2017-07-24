@@ -25,12 +25,10 @@ import android.telephony.SmsMessage;
 
 public class LostFindService extends Service {
 	DevicePolicyManager mDPM;
-	ComponentName mDeviceAdminSample;
 	private SmsReceiver smsReceiver;
 
 	@Override
 	public IBinder onBind(Intent intent) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -46,8 +44,6 @@ public class LostFindService extends Service {
 		super.onCreate();
 
 		mDPM = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
-		mDeviceAdminSample = new ComponentName(this,
-				MyDeviceAdminReceiver.class);
 	}
 
 	private class SmsReceiver extends BroadcastReceiver {
