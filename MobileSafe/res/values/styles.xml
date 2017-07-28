@@ -2,22 +2,23 @@
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
+            backward-compatibility can go here.
         -->
     </style>
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
+
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
         <item name="android:windowNoTitle">true</item>
     </style>
-    
+
     <!-- 手机防盗的顶部样式抽取 -->
     <style name="title_style">
         <item name="android:layout_width">match_parent</item>
@@ -27,7 +28,7 @@
         <item name="android:gravity">center</item>
         <item name="android:background">@drawable/blue_bkg</item>
     </style>
-    
+
     <style name="LostFindDescribeItem">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_margin">5dp</item>
@@ -35,6 +36,21 @@
         <item name="android:drawableLeft">@drawable/dialog_title_default_icon</item>
         <item name="android:textSize">18sp</item>
         <item name="android:drawablePadding">5dp</item>
+    </style>
+    
+    <!-- 自定义dialog的样式 -->
+    <style name="LocationStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/darker_gray</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <!-- 外部视图变暗的设置 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 去掉标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 设置在外面点击关闭 -->
+        <item name="android:windowCloseOnTouchOutside">true</item>
     </style>
 
 </resources>

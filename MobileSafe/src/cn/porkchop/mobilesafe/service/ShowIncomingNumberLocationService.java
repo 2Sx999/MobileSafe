@@ -2,7 +2,7 @@ package cn.porkchop.mobilesafe.service;
 
 import cn.porkchop.mobilesafe.dao.AddressDao;
 import cn.porkchop.mobilesafe.util.DataUtil;
-import cn.porkchop.mobilesafe.view.MyToast;
+import cn.porkchop.mobilesafe.view.LocationToast;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -18,7 +18,7 @@ public class ShowIncomingNumberLocationService extends Service {
 	private TelephonyManager mTelephonyManager;
 	private PhoneStateListener listener;
 	AddressDao addressDao;
-	private MyToast mToast;
+	private LocationToast mToast;
 	private OutCallReceiver mReceiver;
 
 	@Override
@@ -32,7 +32,7 @@ public class ShowIncomingNumberLocationService extends Service {
 		addressDao = new AddressDao(getApplicationContext());
 		registerPhoneStateListener();
 		registerOutCallReceiver();
-		mToast = new MyToast(getApplicationContext());
+		mToast = new LocationToast(getApplicationContext());
 	}
 
 	private void registerOutCallReceiver() {

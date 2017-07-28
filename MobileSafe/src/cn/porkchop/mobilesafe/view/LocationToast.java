@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class LocationToast {
@@ -50,9 +51,14 @@ public class LocationToast {
 	}
 
 	public void show(String location) {
-		mView = View.inflate(mContext, R.layout.mytoast, null);
+		mView = View.inflate(mContext, R.layout.locationtoast, null);
 		tv_location = (TextView) mView.findViewById(R.id.tv_mytoast_location);
+		LinearLayout ll_root = (LinearLayout) mView
+				.findViewById(R.id.ll_locationtoast_root);
 		tv_location.setText(location);
+		ll_root.setBackgroundResource(LocationStyleDialog.bgColors[SPUtil
+				.getInt(mContext, SettingConstant.FILENAME,
+						SettingConstant.LOCATIONSTYLE, 2)]);
 		mView.setOnTouchListener(new OnTouchListener() {
 
 			@Override
@@ -67,7 +73,7 @@ public class LocationToast {
 					float y = event.getRawY();
 					mParams.x += x - downX;
 					mParams.y += y - downY;
-					System.out.println(event.getX()+":"+event.getY());
+					System.out.println(event.getX() + ":" + event.getY());
 					if (mParams.x < 0) {
 						mParams.x = 0;
 					} else if (mParams.x > mWindowManager.getDefaultDisplay()
@@ -83,15 +89,16 @@ public class LocationToast {
 								.getHeight() - mView.getHeight();
 					}
 					mWindowManager.updateViewLayout(mView, mParams);
-					//当前位置变为新的起始位置
+					// 当前位置变为新的起始位置
 					downX = x;
 					downY = y;
 					break;
 				case MotionEvent.ACTION_UP:
-					SPUtil.putInt(mContext, SettingConstant.FILENAME, SettingConstant.PHONELOCATIONTOASTX, mParams.x);
-					SPUtil.putInt(mContext, SettingConstant.FILENAME, SettingConstant.PHONELOCATIONTOASTY, mParams.y);
+					SPUtil.putInt(mContext, SettingConstant.FILENAME,
+							SettingConstant.PHONELOCATIONTOASTX, mParams.x);
+					SPUtil.putInt(mContext, SettingConstant.FILENAME,
+							SettingConstant.PHONELOCATIONTOASTY, mParams.y);
 					break;
-
 				}
 				return true;
 			}

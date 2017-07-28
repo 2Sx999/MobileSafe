@@ -25,5 +25,21 @@
         pkchop:bgSelector="last"
         pkchop:desc="服务号码查询"
         pkchop:isShowToggle="false" />
+    <cn.porkchop.mobilesafe.view.SettingCenterItem
+        android:id="@+id/settingcenteritem_advancedtools_smsbackup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        pkchop:bgSelector="first"
+        pkchop:desc="短信备份"
+        pkchop:isShowToggle="false" />
+
+    <cn.porkchop.mobilesafe.view.SettingCenterItem
+        android:id="@+id/settingcenteritem_advancedtools_smsrestore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        pkchop:bgSelector="last"
+        pkchop:desc="短信还原"
+        pkchop:isShowToggle="false" />
 
 </LinearLayout>

@@ -10,10 +10,10 @@
         android:text="设置中心" />
 
     <cn.porkchop.mobilesafe.view.SettingCenterItem
-        android:layout_marginTop="10dip"
         android:id="@+id/settingcenteritem_settingcenter_autoupdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
         pkchop:bgSelector="first"
         pkchop:desc="自动更新服务" />
 
@@ -21,14 +21,23 @@
         android:id="@+id/settingcenteritem_settingcenter_blacklistintercept"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        pkchop:bgSelector="middle"
+        pkchop:bgSelector="last"
         pkchop:desc="黑名单拦截服务" />
 
     <cn.porkchop.mobilesafe.view.SettingCenterItem
         android:id="@+id/settingcenteritem_settingcenter_incomingnumberlocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        pkchop:bgSelector="last"
+        android:layout_marginTop="10dip"
+        pkchop:bgSelector="first"
         pkchop:desc="来点地址显示服务" />
+
+    <cn.porkchop.mobilesafe.view.SettingCenterItem
+        android:id="@+id/settingcenteritem_settingcenter_locationstyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        pkchop:bgSelector="last"
+        pkchop:desc="归属地样式(卫士蓝)"
+        pkchop:isShowToggle="false" />
 
 </LinearLayout>

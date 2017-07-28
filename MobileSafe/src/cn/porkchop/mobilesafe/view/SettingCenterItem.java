@@ -67,6 +67,7 @@ public class SettingCenterItem extends RelativeLayout {
 			itemView.setBackgroundResource(R.drawable.iv_last_selector);
 			break;
 		}
+		// 判断是否不显示toggle
 		mIsShowToggle = attrs.getAttributeBooleanValue(
 				"http://schemas.android.com/apk/res/cn.porkchop.mobilesafe",
 				"isShowToggle", true);
@@ -122,5 +123,9 @@ public class SettingCenterItem extends RelativeLayout {
 
 			}
 		}
+	}
+
+	public void setDesc(String desc) {
+		tv_desc.setText(desc);
 	}
 }
