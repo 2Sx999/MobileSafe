@@ -13,7 +13,6 @@ import java.util.List;
 import com.google.gson.Gson;
 
 import cn.porkchop.mobilesafe.activity.AdvancedToolsActivity;
-import cn.porkchop.mobilesafe.util.SmsUtil.SmsData.SmsBackup;
 
 import android.app.Activity;
 import android.content.ContentValues;
@@ -36,7 +35,7 @@ public class SmsUtil {
 		void setProgress(int currentProgress);
 	}
 
-	public class SmsData {
+	private class SmsData {
 		public List<SmsBackup> smsbackup;
 
 		public class SmsBackup {
@@ -167,7 +166,7 @@ public class SmsUtil {
 						sb.append(",");
 					}
 					// 更新进度
-
+					SystemClock.sleep(50);
 					listener.setProgress(++progress.p);
 				}
 				// 关闭进度条
@@ -224,14 +223,13 @@ public class SmsUtil {
 		new Thread() {
 			public void run() {
 				for (int i = 0; i < smsData.smsbackup.size(); i++) {
-					SmsBackup smsBackup = smsData.smsbackup.get(i);
+					cn.porkchop.mobilesafe.util.SmsUtil.SmsData.SmsBackup smsBackup = smsData.smsbackup.get(i);
 					ContentValues values = new ContentValues();
 					values.put("address", smsBackup.address);
 					values.put("date", smsBackup.date);
 					values.put("body",
 							convertSpecialToQuotation(smsBackup.body));
 					values.put("type", smsBackup.type);
-					SystemClock.sleep(500);
 					listener.setProgress(i + 1);
 					context.getContentResolver().insert(uri, values);
 				}

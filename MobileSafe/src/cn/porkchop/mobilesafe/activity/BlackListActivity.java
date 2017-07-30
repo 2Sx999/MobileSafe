@@ -105,7 +105,7 @@ public class BlackListActivity extends Activity {
 		tv_callog.setOnClickListener(onClickListener);
 		tv_smslog.setOnClickListener(onClickListener);
 		tv_friendlog.setOnClickListener(onClickListener);
-		mPopupwindow = new PopupWindow(mContentView, 180,
+		mPopupwindow = new PopupWindow(mContentView, LayoutParams.WRAP_CONTENT,
 				LayoutParams.WRAP_CONTENT);
 		mPopupwindow.setFocusable(true);
 		mPopupwindow
