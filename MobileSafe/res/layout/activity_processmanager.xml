@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:pkchop="http://schemas.android.com/apk/res/cn.porkchop.mobilesafe"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            style="@style/title_style"
+            android:text="进程管家" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:onClick="clean"
+            android:src="@drawable/iv_clean_selector" />
+    </RelativeLayout>
+    <!-- 使用内存显示 -->
+
+    <cn.porkchop.mobilesafe.view.ProgressTextView
+        android:id="@+id/progresstextview_processmassage_memory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <ListView
+            android:id="@+id/lv_processmanager_processes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </ListView>
+
+        <TextView
+            android:id="@+id/tv_processmanager_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#33000000"
+            android:text="用户进程(10)"
+            android:textColor="#ffffff" />
+
+        <include layout="@layout/progressbar_circle" />
+
+        <SlidingDrawer
+            android:id="@+id/slidingDrawer_processmanager_processsetting"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="170dip"
+            android:layout_weight="1"
+            android:content="@+id/content"
+            android:handle="@+id/handle" >
+
+            <!-- 抽屉的把手 -->
+
+            <RelativeLayout
+                android:id="@+id/handle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/drawer_bg" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dip"
+                    android:orientation="vertical" >
+
+                    <ImageView
+                        android:id="@+id/iv_processmanager_drawerarrow1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/drawer_arrow_up" />
+
+                    <ImageView
+                        android:id="@+id/iv_processmanager_drawerarrow2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/drawer_arrow_up" />
+                </LinearLayout>
+            </RelativeLayout>
+            <!-- 抽屉的内容 -->
+
+            <LinearLayout
+                android:id="@+id/content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:clickable="true"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dip"
+                    android:text="进程设置"
+                    android:textSize="18sp" />
+
+                <cn.porkchop.mobilesafe.view.SettingCenterItem
+                    android:id="@+id/settingcenteritem_processmanager_showsystemprocess"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    pkchop:bgSelector="first"
+                    pkchop:desc="显示系统进程" />
+
+                <cn.porkchop.mobilesafe.view.SettingCenterItem
+                    android:id="@+id/settingcenteritem_processmanager_clearprocesswhenlockscreen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    pkchop:bgSelector="last"
+                    pkchop:desc="锁屏清理进程" />
+            </LinearLayout>
+        </SlidingDrawer>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/dialog_button_bkground_selector"
+            android:onClick="selectAll"
+            android:text="全选" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/dialog_button_bkground_selector"
+            android:onClick="selectInvert"
+            android:text="反选" />
+    </LinearLayout>
+
+</LinearLayout>
