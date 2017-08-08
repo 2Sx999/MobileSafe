@@ -11,4 +11,6 @@ public interface SettingConstant {
 	String PHONELOCATIONTOASTX = "phonelocationtoastx";
 	String PHONELOCATIONTOASTY = "phonelocationtoasty";
 	String LOCATIONSTYLE = "locationstyle";
+	byte SEED = 100;
+	String ISSHOWSYSTEMPROCESS="isshowsystemprocess";
 }

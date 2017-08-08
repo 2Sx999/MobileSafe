@@ -156,8 +156,9 @@ public class SmsUtil {
 					sb.append("{");
 					sb.append("\"address\":\"" + cursor.getString(0) + "\",");
 					sb.append("\"date\":\"" + cursor.getString(1) + "\",");
+					//先加密再转换特殊字符
 					sb.append("\"body\":\""
-							+ convertQuotationToSpecial(cursor.getString(2))
+							+ convertQuotationToSpecial(EncryptUtil.encrypt(cursor.getString(2), SettingConstant.SEED))
 							+ "\",");
 					sb.append("\"type\":\"" + cursor.getString(3) + "\"}");
 					if (cursor.isLast()) {
@@ -227,8 +228,8 @@ public class SmsUtil {
 					ContentValues values = new ContentValues();
 					values.put("address", smsBackup.address);
 					values.put("date", smsBackup.date);
-					values.put("body",
-							convertSpecialToQuotation(smsBackup.body));
+					values.put("body",EncryptUtil.decrypt(convertSpecialToQuotation(smsBackup.body), SettingConstant.SEED));
+					System.out.println(EncryptUtil.decrypt(convertSpecialToQuotation(smsBackup.body), SettingConstant.SEED));
 					values.put("type", smsBackup.type);
 					listener.setProgress(i + 1);
 					context.getContentResolver().insert(uri, values);
